@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Cell.gd" type="Script" id=1]
+[ext_resource path="res://assets/yellow.svg" type="Texture" id=2]
+[ext_resource path="res://assets/yellow_disabled.svg" type="Texture" id=3]
+[ext_resource path="res://assets/PT-Sans_Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/blue.svg" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="Cell" type="TextureButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 5 )
+texture_disabled = ExtResource( 3 )
+stretch_mode = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+disabled_color = Color( 0, 0, 0, 0.2 )
+
+[node name="Number" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "12"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="disable_toggled" from="." to="." method="_on_Cell_disable_toggled"]
+[connection signal="toggled" from="." to="." method="_on_Cell_toggled"]
